@@ -3,9 +3,9 @@ import datetime
 import glob
 import os
 
-from me.stock_info import get_quote_table
-from bluemesa.util import lineutil
-from bluemesa.redis import util
+from stock_info import get_quote_table
+from blueark.util import lineutil
+#from bluemesa.redis import util
 
 ## This is the group symbol file that will be processed
 ## Just enter a filename without the .txt extension
@@ -64,16 +64,16 @@ def process(symbols, path, key):
     for symbol in symbols:
         get_and_delete_symbol_files(path, symbol)
         filename = build_file_name(symbol)
-        bool = util.redis_set_read(key, symbol)
-        if not bool:
-            print(symbol)
-            data = get_quote_table(symbol, False)
-            # set above line to True and comment out the next line
-            # to return a Dict instead of a Table
-            # mcap = data['Market Cap']
-            out_file = path + filename
-            data.to_csv(out_file)
-            # util.redis_set_write(key,symbol)
+        # bool = util.redis_set_read(key, symbol)
+        # if not bool:
+        print(symbol)
+        data = get_quote_table(symbol, False)
+        # set above line to True and comment out the next line
+        # to return a Dict instead of a Table
+        # mcap = data['Market Cap']
+        out_file = path + filename
+        data.to_csv(out_file)
+        # util.redis_set_write(key,symbol)
 
 
 if __name__ == "__main__":
