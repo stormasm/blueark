@@ -5,7 +5,8 @@ import os
 
 from stock_info import get_quote_table
 from blueark.util import lineutil
-#from bluemesa.redis import util
+
+# from bluemesa.redis import util
 
 ## This is the group symbol file that will be processed
 ## Just enter a filename without the .txt extension

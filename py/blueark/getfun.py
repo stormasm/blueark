@@ -5,7 +5,8 @@ import os
 
 from stock_info import get_stats
 from blueark.util import lineutil
-#from bluemesa.redis import util
+
+# from bluemesa.redis import util
 
 ## This is the group symbol file that will be processed
 ## Just enter a filename without the .txt extension
@@ -64,8 +65,8 @@ def process(symbols, path, key):
     for symbol in symbols:
         get_and_delete_symbol_files(path, symbol)
         filename = build_file_name(symbol)
-        #bool = util.redis_set_read(key, symbol)
-        #if not bool:
+        # bool = util.redis_set_read(key, symbol)
+        # if not bool:
         print(symbol)
         data = get_stats(symbol)
         out_file = path + filename
